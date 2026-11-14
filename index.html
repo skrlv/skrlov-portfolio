@@ -1,0 +1,588 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#efefea" />
+    <title>skrlov — дизайн и разработка сайтов</title>
+    <meta
+      name="description"
+      content="Портфолио skrlov: пять сайтов с индивидуальным дизайном, продуманными сценариями и вниманием к деталям. Посмотрите работы и обсудим ваш проект."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="skrlov — сайты с характером" />
+    <meta
+      property="og:description"
+      content="Пять работ. Пять разных характеров. Дизайн и разработка сайтов для вашего бизнеса."
+    />
+    <meta
+      property="og:url"
+      content="https://skrlv.github.io/skrlov-portfolio/"
+    />
+    <meta
+      property="og:image"
+      content="https://skrlv.github.io/skrlov-portfolio/assets/cover.jpg"
+    />
+    <meta property="og:image:width" content="1280" />
+    <meta property="og:image:height" content="720" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href="assets/icon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script>
+      document.documentElement.classList.add("js", "is-loading");
+      window.setTimeout(function () {
+        document.documentElement.classList.remove("is-loading");
+        document.documentElement.classList.add("loader-failsafe");
+        document.getElementById("app")?.removeAttribute("inert");
+      }, 4000);
+    </script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <div class="loader" id="loader" aria-label="Загрузка портфолио skrlov">
+      <div class="loader-top">
+        <span>ПОРТФОЛИО / 2026</span
+        ><span class="loader-note">С хорошего первого впечатления.</span>
+      </div>
+      <div class="loader-center">
+        <div class="loader-word" aria-hidden="true">
+          <span>skrlov</span><span class="loader-fill">skrlov</span><i>✳</i>
+        </div>
+        <div
+          class="loader-progress"
+          role="progressbar"
+          aria-label="Загрузка портфолио"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <span></span>
+        </div>
+      </div>
+      <div class="loader-bottom">
+        <span><span id="load-number">00</span> / 100</span
+        ><button id="skip-loader" type="button">
+          Пропустить <span aria-hidden="true">↗</span>
+        </button>
+      </div>
+    </div>
+
+    <div id="app">
+      <a class="skip-link" href="#intro-title">Перейти к портфолио</a>
+      <header class="site-header">
+        <a class="logo" href="#intro" data-goto="0" aria-label="skrlov — начало"
+          >skrlov<span aria-hidden="true">✳</span></a
+        >
+        <span class="header-caption">Дизайн + разработка сайтов</span>
+        <a
+          class="contact-link"
+          href="https://t.me/skrlov"
+          target="_blank"
+          rel="noopener noreferrer"
+          >Обсудить проект <span aria-hidden="true">↗</span></a
+        >
+      </header>
+
+      <main id="main">
+        <div class="journey" id="journey">
+          <div class="viewport" id="viewport">
+            <div class="track" id="track">
+              <section
+                class="panel intro-panel"
+                id="intro"
+                aria-labelledby="intro-title"
+                data-label="Начало"
+              >
+                <div class="panel-inner intro-inner">
+                  <div class="intro-top">
+                    <span class="eyebrow"
+                      ><i class="status-dot" aria-hidden="true"></i> Личное
+                      портфолио</span
+                    ><span class="mono">ВЫБРАННЫЕ РАБОТЫ / 2026</span>
+                  </div>
+                  <h1 class="signature" id="intro-title" tabindex="-1">
+                    skrlov<span aria-hidden="true">✳</span>
+                  </h1>
+                  <div class="intro-bottom">
+                    <h2>Сайты, которые<br /><span>хочется открыть.</span></h2>
+                    <div class="intro-description">
+                      <p>
+                        Выразительный дизайн.<br />Понятные сценарии. Внимание к
+                        деталям.
+                      </p>
+                      <a class="text-button" href="#forma" data-goto="1"
+                        >Посмотреть работы <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                    <div class="intro-count">
+                      <strong>05</strong
+                      ><span>работ<br />разных характеров</span>
+                    </div>
+                  </div>
+                  <div class="intro-baseline">
+                    <span class="mono">ВНИЗ — ЗНАЧИТ ДАЛЬШЕ</span
+                    ><span class="scroll-symbol" aria-hidden="true"
+                      >↓ <i></i> →</span
+                    >
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="panel work-panel work-forma"
+                id="forma"
+                aria-labelledby="forma-title"
+                data-label="Форма"
+              >
+                <div class="panel-inner work-inner">
+                  <div class="work-top">
+                    <span class="eyebrow">Работа 01 / 05</span
+                    ><span class="project-kind">Архитектура</span>
+                  </div>
+                  <div class="work-layout">
+                    <div class="work-copy">
+                      <span class="concept-label">Демо-концепт</span>
+                      <h2 id="forma-title">
+                        Форма<span class="project-dot" aria-hidden="true"
+                          >.</span
+                        >
+                      </h2>
+                      <p>
+                        Пространство для сильных идей. Архитектурное бюро с
+                        выразительной галереей, фильтрами проектов и
+                        интерактивным брифом.
+                      </p>
+                      <ul class="tags" aria-label="Особенности проекта">
+                        <li>Галерея</li>
+                        <li>Фильтры</li>
+                        <li>Бриф</li>
+                      </ul>
+                      <a
+                        class="project-link"
+                        href="https://skrlv.github.io/forma-architecture-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Открыть сайт <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                    <figure class="project-figure">
+                      <a
+                        class="preview-link"
+                        href="https://skrlv.github.io/forma-architecture-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Открыть сайт архитектурного бюро Форма в новой вкладке"
+                        ><div class="browser-bar" aria-hidden="true">
+                          <span class="window-dots"><i></i><i></i><i></i></span
+                          ><span>forma / architecture</span><span>↗</span>
+                        </div>
+                        <div class="preview-image">
+                          <img
+                            src="assets/forma.jpg"
+                            width="1280"
+                            height="720"
+                            alt="Сайт Форма: строгая типографика и современная архитектура"
+                            data-preload
+                            decoding="async"
+                          /></div
+                      ></a>
+                      <figcaption>
+                        <span>Чистая геометрия. Чёткий ритм.</span
+                        ><span class="mono">01 — ФОРМА</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="work-baseline">
+                    <span>Дизайн и разработка</span
+                    ><span class="mono">МИНИМАЛИЗМ / АРХИТЕКТУРНАЯ СЕТКА</span>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="panel work-panel work-tishe"
+                id="tishe"
+                aria-labelledby="tishe-title"
+                data-label="Тише"
+              >
+                <div class="panel-inner work-inner">
+                  <div class="work-top">
+                    <span class="eyebrow">Работа 02 / 05</span
+                    ><span class="project-kind">Бутик-отель</span>
+                  </div>
+                  <div class="work-layout">
+                    <div class="work-copy">
+                      <span class="concept-label">Демо-концепт</span>
+                      <h2 id="tishe-title">
+                        Тише<span class="project-dot" aria-hidden="true"
+                          >.</span
+                        >
+                      </h2>
+                      <p>
+                        Атмосфера начинается с первого экрана. Дома среди
+                        природы, маленькие ритуалы и понятный расчёт проживания.
+                      </p>
+                      <ul class="tags" aria-label="Особенности проекта">
+                        <li>Выбор дома</li>
+                        <li>Расчёт</li>
+                        <li>Истории</li>
+                      </ul>
+                      <a
+                        class="project-link"
+                        href="https://skrlv.github.io/tishe-retreat-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Открыть сайт <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                    <figure class="project-figure">
+                      <a
+                        class="preview-link"
+                        href="https://skrlv.github.io/tishe-retreat-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Открыть сайт бутик-отеля Тише в новой вкладке"
+                        ><div class="browser-bar" aria-hidden="true">
+                          <span class="window-dots"><i></i><i></i><i></i></span
+                          ><span>tishe / retreat</span><span>↗</span>
+                        </div>
+                        <div class="preview-image">
+                          <img
+                            src="assets/tishe.jpg"
+                            width="1280"
+                            height="720"
+                            alt="Сайт Тише: лесная палитра и атмосферный горный пейзаж"
+                            data-preload
+                            decoding="async"
+                          /></div
+                      ></a>
+                      <figcaption>
+                        <span>Меньше шума. Больше ощущения.</span
+                        ><span class="mono">02 — ТИШЕ</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="work-baseline">
+                    <span>Дизайн и разработка</span
+                    ><span class="mono">АТМОСФЕРА / ПРИРОДНАЯ ПАЛИТРА</span>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="panel work-panel work-obekt"
+                id="obekt"
+                aria-labelledby="obekt-title"
+                data-label="Объект"
+              >
+                <div class="panel-inner work-inner">
+                  <div class="work-top">
+                    <span class="eyebrow">Работа 03 / 05</span
+                    ><span class="project-kind">Предметный дизайн</span>
+                  </div>
+                  <div class="work-layout">
+                    <div class="work-copy">
+                      <span class="concept-label">Демо-концепт</span>
+                      <h2 id="obekt-title">
+                        Объект<span class="project-dot" aria-hidden="true"
+                          >.</span
+                        >
+                      </h2>
+                      <p>
+                        Галерея вещей с характером. Каталог с фильтрами,
+                        подробные карточки и корзина, которая помнит выбранное.
+                      </p>
+                      <ul class="tags" aria-label="Особенности проекта">
+                        <li>Каталог</li>
+                        <li>Карточки</li>
+                        <li>Корзина</li>
+                      </ul>
+                      <a
+                        class="project-link"
+                        href="https://skrlv.github.io/obekt-design-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Открыть сайт <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                    <figure class="project-figure">
+                      <a
+                        class="preview-link"
+                        href="https://skrlv.github.io/obekt-design-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Открыть магазин мебели Объект в новой вкладке"
+                        ><div class="browser-bar" aria-hidden="true">
+                          <span class="window-dots"><i></i><i></i><i></i></span
+                          ><span>obekt / objects</span><span>↗</span>
+                        </div>
+                        <div class="preview-image">
+                          <img
+                            src="assets/obekt.jpg"
+                            width="1280"
+                            height="720"
+                            alt="Сайт Объект: минималистичная мебельная галерея с кобальтовым акцентом"
+                            data-preload
+                            decoding="async"
+                          /></div
+                      ></a>
+                      <figcaption>
+                        <span>Точный акцент меняет всё.</span
+                        ><span class="mono">03 — ОБЪЕКТ</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="work-baseline">
+                    <span>Дизайн и разработка</span
+                    ><span class="mono">ГАЛЕРЕЙНАЯ ПОДАЧА / E-COMMERCE</span>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="panel work-panel work-pauza"
+                id="pauza"
+                aria-labelledby="pauza-title"
+                data-label="Пауза"
+              >
+                <div class="panel-inner work-inner">
+                  <div class="work-top">
+                    <span class="eyebrow">Работа 04 / 05</span
+                    ><span class="project-kind">Кофейня</span>
+                  </div>
+                  <div class="work-layout">
+                    <div class="work-copy">
+                      <span class="concept-label">Демо-концепт</span>
+                      <h2 id="pauza-title">
+                        Пауза<span class="project-dot" aria-hidden="true"
+                          >.</span
+                        >
+                      </h2>
+                      <p>
+                        Тёплый характер и хороший вкус. Кофейная афиша с меню,
+                        поиском по ингредиентам и избранным для любимых позиций.
+                      </p>
+                      <ul class="tags" aria-label="Особенности проекта">
+                        <li>Меню</li>
+                        <li>Поиск</li>
+                        <li>Избранное</li>
+                      </ul>
+                      <a
+                        class="project-link"
+                        href="https://skrlv.github.io/pauza-coffee-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Открыть сайт <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                    <figure class="project-figure">
+                      <a
+                        class="preview-link"
+                        href="https://skrlv.github.io/pauza-coffee-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Открыть сайт кофейни Пауза в новой вкладке"
+                        ><div class="browser-bar" aria-hidden="true">
+                          <span class="window-dots"><i></i><i></i><i></i></span
+                          ><span>pauza / coffee</span><span>↗</span>
+                        </div>
+                        <div class="preview-image">
+                          <img
+                            src="assets/pauza.jpg"
+                            width="1280"
+                            height="720"
+                            alt="Сайт Пауза: кофейная афиша в кремовой и винной палитре"
+                            data-preload
+                            decoding="async"
+                          /></div
+                      ></a>
+                      <figcaption>
+                        <span>Немного кофе. Больше радости.</span
+                        ><span class="mono">04 — ПАУЗА</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="work-baseline">
+                    <span>Дизайн и разработка</span
+                    ><span class="mono">ТИПОГРАФИКА / ТЁПЛЫЙ ХАРАКТЕР</span>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="panel work-panel work-chisto"
+                id="chisto"
+                aria-labelledby="chisto-title"
+                data-label="Чисто"
+              >
+                <div class="panel-inner work-inner">
+                  <div class="work-top">
+                    <span class="eyebrow">Работа 05 / 05</span
+                    ><span class="project-kind">Клининг</span>
+                  </div>
+                  <div class="work-layout">
+                    <div class="work-copy">
+                      <span class="concept-label">Демо-концепт</span>
+                      <h2 id="chisto-title">
+                        Чисто<span class="project-dot" aria-hidden="true"
+                          >.</span
+                        >
+                      </h2>
+                      <p>
+                        Сложное — сделать простым. Сервисный сайт с
+                        калькулятором стоимости, демо-заявкой и личным
+                        кабинетом.
+                      </p>
+                      <ul class="tags" aria-label="Особенности проекта">
+                        <li>Калькулятор</li>
+                        <li>Заявка</li>
+                        <li>Кабинет</li>
+                      </ul>
+                      <a
+                        class="project-link"
+                        href="https://skrlv.github.io/chisto-cleaning-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Открыть сайт <span aria-hidden="true">↗</span></a
+                      >
+                    </div>
+                    <figure class="project-figure">
+                      <a
+                        class="preview-link"
+                        href="https://skrlv.github.io/chisto-cleaning-demo/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Открыть сайт клининга Чисто в новой вкладке"
+                        ><div class="browser-bar" aria-hidden="true">
+                          <span class="window-dots"><i></i><i></i><i></i></span
+                          ><span>chisto / service</span><span>↗</span>
+                        </div>
+                        <div class="preview-image">
+                          <img
+                            src="assets/chisto.jpg"
+                            width="1280"
+                            height="720"
+                            alt="Сайт Чисто: аккуратный сервисный интерфейс с бирюзовым и лаймовым акцентами"
+                            data-preload
+                            decoding="async"
+                          /></div
+                      ></a>
+                      <figcaption>
+                        <span>Каждая деталь работает на ясность.</span
+                        ><span class="mono">05 — ЧИСТО</span>
+                      </figcaption>
+                    </figure>
+                  </div>
+                  <div class="work-baseline">
+                    <span>Дизайн и разработка</span
+                    ><span class="mono">ПОНЯТНЫЙ СЦЕНАРИЙ / ИНТЕРАКТИВ</span>
+                  </div>
+                </div>
+              </section>
+
+              <section
+                class="panel contact-panel"
+                id="contact"
+                aria-labelledby="contact-title"
+                data-label="Контакт"
+              >
+                <div class="panel-inner contact-inner">
+                  <div class="work-top">
+                    <span class="eyebrow"
+                      ><i class="status-dot" aria-hidden="true"></i> Начнём с
+                      разговора</span
+                    ><span class="mono">СЛЕДУЮЩИЙ ПРОЕКТ / ВАШ</span>
+                  </div>
+                  <div class="contact-content">
+                    <h2 id="contact-title">
+                      Хороший сайт<br /><span>начинается с идеи.</span>
+                    </h2>
+                    <div class="contact-aside">
+                      <p>
+                        Расскажите о своей задаче.<br />Обсудим, каким может
+                        быть ваш сайт.
+                      </p>
+                      <a
+                        class="contact-cta"
+                        href="https://t.me/skrlov"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        >Написать в Telegram
+                        <span aria-hidden="true">↗</span></a
+                      ><span class="contact-handle">@skrlov</span>
+                    </div>
+                  </div>
+                  <div class="contact-footer">
+                    <p>
+                      Все пять работ — демонстрационные концепции.<br />Их можно
+                      открыть и попробовать в действии.
+                    </p>
+                    <span class="logo"
+                      >skrlov<span aria-hidden="true">✳</span></span
+                    ><span class="mono">2026</span>
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="navigation-bar" aria-label="Управление просмотром">
+        <div class="position">
+          <span id="current-number">01</span
+          ><span class="position-divider">/</span><span>07</span
+          ><span class="current-label" id="current-label">Начало</span>
+        </div>
+        <nav class="screen-nav" aria-label="Переход к экрану">
+          <a href="#intro" data-goto="0" aria-label="Начало" aria-current="step"
+            ><span>01</span></a
+          ><a href="#forma" data-goto="1" aria-label="Форма"><span>02</span></a
+          ><a href="#tishe" data-goto="2" aria-label="Тише"><span>03</span></a
+          ><a href="#obekt" data-goto="3" aria-label="Объект"><span>04</span></a
+          ><a href="#pauza" data-goto="4" aria-label="Пауза"><span>05</span></a
+          ><a href="#chisto" data-goto="5" aria-label="Чисто"><span>06</span></a
+          ><a href="#contact" data-goto="6" aria-label="Контакт"
+            ><span>07</span></a
+          >
+        </nav>
+        <div class="navigation-actions">
+          <button type="button" id="view-toggle" aria-pressed="false">
+            Списком</button
+          ><span class="scroll-hint" id="scroll-hint"
+            >Листайте вниз <span aria-hidden="true">↘</span></span
+          ><button
+            class="nav-arrow"
+            type="button"
+            id="previous"
+            aria-label="Предыдущий экран"
+            disabled
+          >
+            ←</button
+          ><button
+            class="nav-arrow"
+            type="button"
+            id="next"
+            aria-label="Следующий экран"
+          >
+            →
+          </button>
+        </div>
+        <div class="journey-progress" aria-hidden="true">
+          <span id="journey-progress"></span>
+        </div>
+      </footer>
+      <p
+        class="sr-only"
+        id="screen-announcement"
+        aria-live="polite"
+        aria-atomic="true"
+      ></p>
+    </div>
+    <noscript
+      ><p class="noscript-note">
+        Работы доступны списком. Откройте любой сайт по ссылке.
+      </p></noscript
+    >
+  </body>
+</html>
