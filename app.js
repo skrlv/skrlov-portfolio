@@ -35,6 +35,7 @@ let loaderFinished = false;
 let snapTimer = 0;
 let settledTop = 0;
 let settledIndex = 0;
+let pendingTarget = null;
 
 const interactive = (element) =>
   element instanceof Element &&
@@ -89,6 +90,11 @@ function render() {
     track.style.transform = `translate3d(${-progress * metrics.travel}px,0,0)`;
     progressBar.style.transform = `scaleX(${progress})`;
     setPanel(activePanel(progress, panels.length), true);
+    if (
+      pendingTarget !== null &&
+      Math.abs(progress * (panels.length - 1) - pendingTarget) < 0.002
+    )
+      pendingTarget = null;
   } else {
     const middle = scrollY + innerHeight * 0.42;
     let current = 0;
@@ -96,6 +102,11 @@ function render() {
       if (panel.offsetTop <= middle) current = i;
     });
     setPanel(current, false);
+    if (
+      pendingTarget !== null &&
+      Math.abs(scrollY - panels[pendingTarget].offsetTop) < 2
+    )
+      pendingTarget = null;
     progressBar.style.transform = `scaleX(${current / (panels.length - 1)})`;
   }
 }
@@ -135,12 +146,12 @@ function schedule() {
 
 function setup({ preserve = true, keepProgress = false } = {}) {
   clearTimeout(snapTimer);
-  const active = index;
+  const active = pendingTarget ?? index;
   const oldProgress = isHorizontal
     ? scrollProgress(scrollY, stageTop, metrics.scrollDistance)
     : active / (panels.length - 1);
   const height = measuredHeight();
-  const minimumHeight = innerWidth <= 600 ? 640 : 560;
+  const minimumHeight = innerWidth <= 600 ? 640 : innerWidth <= 900 ? 760 : 560;
   isHorizontal =
     (listPreference ?? !reduced.matches) && height >= minimumHeight;
   root.classList.toggle("is-horizontal", isHorizontal);
@@ -167,14 +178,15 @@ function setup({ preserve = true, keepProgress = false } = {}) {
   if (preserve) {
     if (isHorizontal)
       window.scrollTo({
-        top: keepProgress
-          ? stageTop + oldProgress * metrics.scrollDistance
-          : scrollForPanel(
-              active,
-              panels.length,
-              stageTop,
-              metrics.scrollDistance,
-            ),
+        top:
+          keepProgress && pendingTarget === null
+            ? stageTop + oldProgress * metrics.scrollDistance
+            : scrollForPanel(
+                active,
+                panels.length,
+                stageTop,
+                metrics.scrollDistance,
+              ),
         behavior: "instant",
       });
     else
@@ -189,6 +201,7 @@ function setup({ preserve = true, keepProgress = false } = {}) {
 
 function goTo(target, { focus = false, updateHash = true } = {}) {
   const to = Math.round(clamp(target, 0, panels.length - 1));
+  pendingTarget = to;
   const top = isHorizontal
     ? scrollForPanel(to, panels.length, stageTop, metrics.scrollDistance)
     : panels[to].offsetTop;
@@ -249,6 +262,20 @@ window.addEventListener("keydown", (event) => {
   goTo(target);
 });
 window.addEventListener("scroll", schedule, { passive: true });
+window.addEventListener(
+  "wheel",
+  () => {
+    pendingTarget = null;
+  },
+  { passive: true },
+);
+window.addEventListener(
+  "pointerdown",
+  () => {
+    pendingTarget = null;
+  },
+  { passive: true },
+);
 let resizeTimer;
 function resize() {
   clearTimeout(resizeTimer);
