@@ -16,6 +16,27 @@ for (const file of ['index.html', 'styles.css', 'app.js', 'scroll-model.mjs']) {
 }
 
 const html = files['index.html'];
+const expectedPanels = ['intro', 'g2', 'forma', 'tishe', 'obekt', 'pauza', 'chisto', 'contact'];
+const attribute = (tag, name) => tag.match(new RegExp(`(?:^|\\s)${name}\\s*=\\s*["']([^"']*)["']`))?.[1];
+const panelTags = [...html.matchAll(/<section\b[^>]*>/g)]
+  .map(match => match[0])
+  .filter(tag => attribute(tag, 'class')?.split(/\s+/).includes('panel'));
+const actualPanels = panelTags.map(tag => attribute(tag, 'id'));
+if (JSON.stringify(actualPanels) !== JSON.stringify(expectedPanels)) {
+  errors.push(`Expected the eight portfolio screens in order: ${expectedPanels.join(', ')}; got ${actualPanels.join(', ')}.`);
+}
+for (const match of html.matchAll(/<a\b[^>]*\bdata-goto\s*=\s*["'][^"']*["'][^>]*>/g)) {
+  const tag = match[0];
+  const index = Number(attribute(tag, 'data-goto'));
+  if (!Number.isInteger(index) || index < 0 || index >= expectedPanels.length || attribute(tag, 'href') !== `#${expectedPanels[index]}`) {
+    errors.push(`Navigation target does not match its screen: ${tag}`);
+  }
+}
+const rail = html.match(/<nav\b[^>]*class\s*=\s*["'][^"']*\bscreen-nav\b[^"']*["'][^>]*>([\s\S]*?)<\/nav>/)?.[1] ?? '';
+const railTargets = [...rail.matchAll(/<a\b[^>]*>/g)].map(match => Number(attribute(match[0], 'data-goto')));
+if (railTargets.length !== expectedPanels.length || railTargets.some((target, index) => target !== index)) {
+  errors.push('The navigation rail must link to all eight screens exactly once and in order.');
+}
 const ids = [...html.matchAll(/(?:^|\s)id\s*=\s*["']([^"']+)["']/g)].map(match => match[1]);
 const uniqueIds = new Set(ids);
 if (uniqueIds.size !== ids.length) {
@@ -80,16 +101,16 @@ for (const match of html.matchAll(/\baria-(?:controls|labelledby|describedby)\s*
 }
 
 const content = `${html}\n${files['app.js']}`;
-for (const repo of ['forma-architecture-demo', 'tishe-retreat-demo', 'obekt-design-demo', 'pauza-coffee-demo', 'chisto-cleaning-demo']) {
+for (const repo of ['g2-fashion-demo', 'forma-architecture-demo', 'tishe-retreat-demo', 'obekt-design-demo', 'pauza-coffee-demo', 'chisto-cleaning-demo']) {
   const url = `https://skrlv.github.io/${repo}/`;
   if (!content.includes(url)) errors.push(`Project link is missing: ${url}`);
 }
 if (!content.includes('https://t.me/skrlov')) errors.push('The supplied Telegram contact is missing.');
-for (const image of ['forma', 'tishe', 'obekt', 'pauza', 'chisto']) await checkReference(`assets/${image}.jpg`, 'index.html', false);
+for (const image of ['g2', 'forma', 'tishe', 'obekt', 'pauza', 'chisto']) await checkReference(`assets/${image}.jpg`, 'index.html', false);
 
 if (errors.length) {
   console.error(`Site validation failed:\n${errors.map(error => `- ${error}`).join('\n')}`);
   process.exitCode = 1;
 } else {
-  console.log(`Site validation passed: ${uniqueIds.size} unique IDs, ${checked.size} local resources, all 5 project links and Telegram contact.`);
+  console.log(`Site validation passed: ${uniqueIds.size} unique IDs, ${checked.size} local resources, 8 screens, all 6 project links and Telegram contact.`);
 }

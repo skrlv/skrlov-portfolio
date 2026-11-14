@@ -11,16 +11,16 @@ test('scroll progress respects the section offset and elastic overscroll', () =>
 });
 
 test('the nearest panel switches exactly at its midpoint and stays within the story', () => {
-  assert.equal(activePanel(0, 7), 0);
-  assert.equal(activePanel((2.5 / 6) - 0.00001, 7), 2);
-  assert.equal(activePanel(2.5 / 6, 7), 3);
-  assert.equal(activePanel(1, 7), 6);
-  assert.equal(activePanel(100, 7), 6);
-  assert.equal(activePanel(-100, 7), 0);
+  assert.equal(activePanel(0, 8), 0);
+  assert.equal(activePanel((2.5 / 7) - 0.00001, 8), 2);
+  assert.equal(activePanel(2.5 / 7, 8), 3);
+  assert.equal(activePanel(1, 8), 7);
+  assert.equal(activePanel(100, 8), 7);
+  assert.equal(activePanel(-100, 8), 0);
 });
 
 test('rail targets round-trip through native scroll at every screen', () => {
-  for (const count of [2, 5, 7]) {
+  for (const count of [2, 5, 7, 8]) {
     for (let index = 0; index < count; index += 1) {
       const target = scrollForPanel(index, count, 180, 4104);
       assert.equal(activePanel(scrollProgress(target, 180, 4104), count), index);
@@ -32,23 +32,23 @@ test('rail targets round-trip through native scroll at every screen', () => {
 });
 
 test('desktop journey has one horizontal viewport per step without excessive vertical travel', () => {
-  assert.deepEqual(scrollMetrics(1280, 720, 7), {
-    travel: 7680,
-    scrollDistance: 4104,
-    stageHeight: 4824,
+  assert.deepEqual(scrollMetrics(1280, 720, 8), {
+    travel: 8960,
+    scrollDistance: 4788,
+    stageHeight: 5508,
   });
 });
 
 test('portrait resize changes geometry while preserving the selected screen', () => {
-  const desktop = scrollMetrics(1280, 720, 7);
-  const phone = scrollMetrics(375, 812, 7);
-  assert.equal(phone.travel, 2250);
-  assert.equal(phone.scrollDistance, 4628.4);
-  for (let screen = 0; screen < 7; screen += 1) {
-    const before = scrollProgress(scrollForPanel(screen, 7, 0, desktop.scrollDistance), 0, desktop.scrollDistance);
-    const after = scrollProgress(scrollForPanel(screen, 7, 0, phone.scrollDistance), 0, phone.scrollDistance);
+  const desktop = scrollMetrics(1280, 720, 8);
+  const phone = scrollMetrics(375, 812, 8);
+  assert.equal(phone.travel, 2625);
+  assert.equal(phone.scrollDistance, 5399.8);
+  for (let screen = 0; screen < 8; screen += 1) {
+    const before = scrollProgress(scrollForPanel(screen, 8, 0, desktop.scrollDistance), 0, desktop.scrollDistance);
+    const after = scrollProgress(scrollForPanel(screen, 8, 0, phone.scrollDistance), 0, phone.scrollDistance);
     assert.ok(Math.abs(before - after) < 1e-12);
-    assert.equal(activePanel(after, 7), screen);
+    assert.equal(activePanel(after, 8), screen);
   }
 });
 
